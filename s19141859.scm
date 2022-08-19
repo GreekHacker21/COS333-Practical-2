@@ -22,6 +22,14 @@
 
 (define getEveryOddElement
 	(lambda (l)
-		(car (cdr (cdr l)))
+		(if (not (null? l))
+			(if (not (null? (cdr l)))
+				(if (null? (cdr (cdr l)))
+					(cons (car l) '())
+					(cons (car l) (getEveryOddElement (cdr (cdr l))))
+				)
+				(cons (car l) '())
+			)
+		)
 	)
 )
